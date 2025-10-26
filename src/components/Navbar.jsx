@@ -4,9 +4,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function AppNavbar() {
   const [expanded, setExpanded] = useState(false);
-  const drawerRef = useRef(null); // Ref to the drawer element for click outside and drag logic
+  const [activeLink, setActiveLink] = useState('home');
+  const drawerRef = useRef(null);
 
-  // --- Click Outside to Close ---
+  const navLinkIds = ['home', 'about', 'skills', 'experience', 'projects', 'contact'];
+
+  const handleScroll = useCallback(() => {
+    const scrollPosition = window.scrollY + 100; // Offset to trigger a bit earlier
+    let currentSectionId = 'home';
+
+    for (const id of navLinkIds) {
+      const section = document.getElementById(id);
+      if (section) {
+        if (section.offsetTop <= scrollPosition && section.offsetTop + section.offsetHeight > scrollPosition) {
+          currentSectionId = id;
+          break;
+        }
+      }
+    }
+    setActiveLink(currentSectionId);
+  }, [navLinkIds]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [handleScroll]);
+
   const handleClickOutside = useCallback((event) => {
     if (
       expanded &&
@@ -79,32 +104,21 @@ function AppNavbar() {
     setCurrentTranslateX(0);
   };
 
-  // =========================================================
-  // THE FIX: Add this useEffect to clean up inline styles
-  // =========================================================
   useEffect(() => {
-    // If the drawer is NOT expanded and the ref exists...
     if (!expanded && drawerRef.current) {
-      // Use a timeout to allow the closing animation to complete
       const timer = setTimeout(() => {
-        // Reset the transform style to whatever the CSS dictates
         drawerRef.current.style.transform = '';
-        // Also reset the transition in case it was set to 'none' during a drag
         drawerRef.current.style.transition = '';
-      }, 300); // 300ms matches our CSS transition duration
+      }, 300);
 
-      // Cleanup function for the timer
       return () => clearTimeout(timer);
     }
   }, [expanded]);
-  // =========================================================
-  // END OF FIX
-  // =========================================================
-
 
   // Common close handler
   const handleNavLinkClick = (id) => {
     setExpanded(false);
+    setActiveLink(id);
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -136,12 +150,12 @@ function AppNavbar() {
               </button>
             )}
             <Nav className="ms-auto">
-              <Nav.Link onClick={() => handleNavLinkClick('home')}>Home</Nav.Link>
-              <Nav.Link onClick={() => handleNavLinkClick('about')}>About</Nav.Link>
-              <Nav.Link onClick={() => handleNavLinkClick('skills')}>Skills</Nav.Link>
-              <Nav.Link onClick={() => handleNavLinkClick('experience')}>Experience</Nav.Link>
-              <Nav.Link onClick={() => handleNavLinkClick('projects')}>Projects</Nav.Link>
-              <Nav.Link onClick={() => handleNavLinkick('contact')}>Contact</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('home')} className={activeLink === 'home' ? 'active' : ''}>Home</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('about')} className={activeLink === 'about' ? 'active' : ''}>About</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('skills')} className={activeLink === 'skills' ? 'active' : ''}>Skills</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('experience')} className={activeLink === 'experience' ? 'active' : ''}>Experience</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('projects')} className={activeLink === 'projects' ? 'active' : ''}>Projects</Nav.Link>
+              <Nav.Link onClick={() => handleNavLinkClick('contact')} className={activeLink === 'contact' ? 'active' : ''}>Contact</Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

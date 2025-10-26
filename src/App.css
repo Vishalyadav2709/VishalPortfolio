@@ -109,84 +109,95 @@ section {
 /* --- Navbar Specific Styling --- */
 .app-navbar {
   background-color: white !important;
-  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1030; /* Main navbar, always visible */
+  z-index: 1030;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .app-navbar .navbar-brand,
 .app-navbar .nav-link {
   color: #343a40 !important;
   font-weight: 500;
+  position: relative;
+  padding: 0.5rem 0;
+  margin: 0 1rem;
   transition: color 0.3s ease-in-out;
 }
 
-.app-navbar .nav-link:hover {
-  color: #007bff !important;
+.app-navbar .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #007bff;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
 }
 
+.app-navbar .nav-link:hover::after,
+.app-navbar .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+
 .app-navbar .navbar-toggler {
-  border-color: rgba(0, 0, 0, 0.1) !important;
+  border: none;
 }
 
 .app-navbar .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.55%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
 }
 
 .navbar-brand-logo {
   display: flex;
   align-items: center;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.05em;
+  color: #000 !important;
 }
-
-.logo-text {
-  color: black;
-  font-family: 'Arial', sans-serif;
-}
-
 
 /* --- Mobile Drawer Styling --- */
 @media (max-width: 991.98px) {
   .app-navbar .mobile-drawer {
     position: fixed;
     top: 0;
-    right: -280px; /* Start off-screen to the right */
-    width: 220px;
+    right: -280px;
+    width: 250px;
     max-width: 80vw;
     height: 100vh;
     background-color: white;
-    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transform transition */
-    padding-top: 1rem;
-    z-index: 1040; /* Higher than main navbar, always */
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+    transition: right 0.35s ease-in-out, transform 0.35s ease-in-out;
+    padding-top: 1.5rem;
+    z-index: 1040;
     overflow-y: auto;
     flex-direction: column;
     align-items: flex-start;
   }
 
-  /* When drawer is NOT shown, ensure it's completely out of the way */
   .app-navbar .mobile-drawer:not(.show) {
-    pointer-events: none; /* Disable interaction when closed */
-    visibility: hidden; /* Hide completely when closed */
-    right: -280px; /* Ensure it stays off screen */
-    transform: translateX(0px); /* Reset transform */
+    pointer-events: none;
+    visibility: hidden;
+    right: -280px;
   }
 
   .app-navbar .mobile-drawer.show {
     right: 0;
     visibility: visible;
     pointer-events: auto;
-    transform: translateX(0px); /* Reset transform if it was dragged before */
   }
 
-  /* When dragging, disable transitions for smooth user-controlled movement */
   .app-navbar .mobile-drawer.dragging {
-      transition: none !important;
+    transition: none !important;
   }
 
   .app-navbar .navbar-nav {
@@ -196,17 +207,21 @@ section {
   }
 
   .app-navbar .navbar-nav .nav-link {
-    padding: 0.75rem 1.5rem;
+    padding: 1rem 1.5rem;
     width: 100%;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
   }
 
-  .app-navbar .navbar-nav .nav-link:last-child {
-    border-bottom: none;
+  .app-navbar .navbar-nav .nav-link::after {
+    display: none;
   }
 
-  /* Style for the Close button */
+  .app-navbar .nav-link.active {
+    color: #007bff !important;
+    font-weight: 700;
+  }
+
   .drawer-close-btn {
     position: absolute;
     top: 15px;
@@ -214,41 +229,19 @@ section {
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0;
-    line-height: 1;
-    opacity: 0.7;
-    transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+    padding: 0.5rem;
+    transition: transform 0.2s ease-in-out;
     z-index: 1060;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
   }
 
   .drawer-close-btn:hover {
-    opacity: 1;
-    color: #007bff;
+    transform: rotate(90deg);
   }
 
   .drawer-close-btn svg {
-    display: block;
     stroke: #343a40;
-    width: 24px;
-    height: 24px;
-    transition: stroke 0.2s ease-in-out;
   }
 
-  .drawer-close-btn:hover svg {
-    stroke: #007bff;
-  }
-
-  /* No offcanvas-overlay styles needed now */
-
-  /* Body overflow management for drawer */
-  body {
-    -webkit-overflow-scrolling: touch;
-  }
   body.offcanvas-open {
     overflow: hidden;
   }
@@ -259,19 +252,18 @@ section {
   .app-navbar .mobile-drawer {
     position: static !important;
     width: auto !important;
-    max-width: none !important;
     height: auto !important;
     box-shadow: none !important;
+    background-color: transparent !important;
     padding-top: 0 !important;
     z-index: auto !important;
     overflow-y: visible !important;
     flex-direction: row !important;
     align-items: center !important;
     transition: none !important;
-    pointer-events: auto !important;
-    visibility: visible !important;
-    transform: translateX(0px) !important; /* Ensure no lingering transform */
+    transform: translateX(0px) !important;
   }
+
   .app-navbar .mobile-drawer .drawer-close-btn {
     display: none !important;
   }
