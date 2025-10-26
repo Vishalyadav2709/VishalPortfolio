@@ -114,7 +114,7 @@ section {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1030;
+  z-index: 1030; /* Main navbar, below drawer, above content */
 }
 
 .app-navbar .navbar-brand,
@@ -130,6 +130,7 @@ section {
 
 .app-navbar .navbar-toggler {
   border-color: rgba(0, 0, 0, 0.1) !important;
+  z-index: 1035; /* Ensure toggler is above the main navbar and overlay */
 }
 
 .app-navbar .navbar-toggler-icon {
@@ -142,6 +143,7 @@ section {
   font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: -0.05em;
+  z-index: 1035; /* Ensure brand is also clickable */
 }
 
 .logo-text {
@@ -152,18 +154,18 @@ section {
 
 /* --- Mobile Drawer Styling --- */
 @media (max-width: 991.98px) {
-  .app-navbar .mobile-drawer { /* Use the new class here */
+  .app-navbar .mobile-drawer {
     position: fixed;
     top: 0;
-    right: -280px;
+    right: -280px; /* Start off-screen to the right */
     width: 280px;
     max-width: 80vw;
     height: 100vh;
     background-color: white;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease-in-out, z-index 0s linear 0.3s;
-    padding-top: 1rem; /* Adjust padding to make space for the close button at the very top */
-    z-index: -1;
+    transition: right 0.3s ease-in-out; /* Speed up transitions if needed here */
+    padding-top: 1rem;
+    z-index: 1050; /* Drawer itself should be highest */
     overflow-y: auto;
     flex-direction: column;
     align-items: flex-start;
@@ -171,14 +173,20 @@ section {
 
   .app-navbar .mobile-drawer.show {
     right: 0;
-    z-index: 1040; /* Bring to front when open (higher than fixed navbar's 1030) */
-    transition: right 0.3s ease-in-out;
   }
+
+  /* When drawer is NOT shown, ensure it's completely out of the way */
+  .app-navbar .mobile-drawer:not(.show) {
+    pointer-events: none; /* Disable interaction when closed */
+    visibility: hidden; /* Hide completely when closed */
+    /* z-index remains 1050 but visibility/pointer-events make it inert */
+  }
+
 
   .app-navbar .navbar-nav {
     flex-direction: column;
     width: 100%;
-    margin-top: 2rem; /* Give some space below the close button */
+    margin-top: 2rem;
   }
 
   .app-navbar .navbar-nav .nav-link {
@@ -195,30 +203,91 @@ section {
   /* Style for the Close button */
   .drawer-close-btn {
     position: absolute;
-    top: 15px; /* Adjust as needed */
-    right: 15px; /* Adjust as needed */
+    top: 15px;
+    right: 15px;
     background: transparent;
     border: none;
-    font-size: 1.8rem; /* Make the 'X' large enough */
-    color: #343a40; /* Dark color */
     cursor: pointer;
-    padding: 0; /* Remove default button padding */
-    line-height: 1; /* Ensure 'X' is centered */
+    padding: 0;
+    line-height: 1;
     opacity: 0.7;
-    transition: opacity 0.2s ease-in-out;
-    z-index: 1070; /* Ensure it's always on top within the drawer */
+    transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
+    z-index: 1060; /* Higher than drawer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
   }
 
   .drawer-close-btn:hover {
     opacity: 1;
-    color: #007bff; /* Highlight on hover */
+    color: #007bff;
+  }
+
+  .drawer-close-btn svg {
+    display: block;
+    stroke: #343a40;
+    width: 24px;
+    height: 24px;
+    transition: stroke 0.2s ease-in-out;
+  }
+
+  .drawer-close-btn:hover svg {
+    stroke: #007bff;
+  }
+
+  /* Transparent Overlay for click-outside-close */
+  .offcanvas-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); /* Subtle dimming effect */
+    z-index: 1040; /* BETWEEN main navbar (1030) and open drawer (1050) */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Delay visibility when closing */
+  }
+
+  /* Show overlay when expanded */
+  .offcanvas-overlay.show-overlay {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease-in-out; /* Instant visibility when opening */
   }
 
   /* Body overflow management for drawer */
   body {
-    -webkit-overflow-scrolling: touch; /* smoother scrolling on iOS */
+    -webkit-overflow-scrolling: touch;
   }
   body.offcanvas-open {
     overflow: hidden;
+  }
+}
+
+/* Ensure desktop doesn't show drawer styles */
+@media (min-width: 992px) {
+  .app-navbar .mobile-drawer {
+    position: static !important;
+    width: auto !important;
+    max-width: none !important;
+    height: auto !important;
+    box-shadow: none !important;
+    padding-top: 0 !important;
+    z-index: auto !important;
+    overflow-y: visible !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    transition: none !important;
+    pointer-events: auto !important; /* Ensure interactions are re-enabled */
+    visibility: visible !important;
+  }
+  .app-navbar .mobile-drawer .drawer-close-btn {
+    display: none !important;
+  }
+  .offcanvas-overlay {
+    display: none !important;
   }
 }
