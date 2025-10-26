@@ -114,7 +114,7 @@ section {
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 1030; /* Main navbar, below drawer, above content */
+  z-index: 1030; /* Main navbar, always visible */
 }
 
 .app-navbar .navbar-brand,
@@ -130,7 +130,6 @@ section {
 
 .app-navbar .navbar-toggler {
   border-color: rgba(0, 0, 0, 0.1) !important;
-  z-index: 1035; /* Ensure toggler is above the main navbar and overlay */
 }
 
 .app-navbar .navbar-toggler-icon {
@@ -143,7 +142,6 @@ section {
   font-size: 1.7rem;
   font-weight: 700;
   letter-spacing: -0.05em;
-  z-index: 1035; /* Ensure brand is also clickable */
 }
 
 .logo-text {
@@ -163,25 +161,33 @@ section {
     height: 100vh;
     background-color: white;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-    transition: right 0.3s ease-in-out; /* Speed up transitions if needed here */
+    transition: right 0.3s ease-in-out, transform 0.3s ease-in-out; /* Add transform transition */
     padding-top: 1rem;
-    z-index: 1050; /* Drawer itself should be highest */
+    z-index: 1040; /* Higher than main navbar, always */
     overflow-y: auto;
     flex-direction: column;
     align-items: flex-start;
-  }
-
-  .app-navbar .mobile-drawer.show {
-    right: 0;
   }
 
   /* When drawer is NOT shown, ensure it's completely out of the way */
   .app-navbar .mobile-drawer:not(.show) {
     pointer-events: none; /* Disable interaction when closed */
     visibility: hidden; /* Hide completely when closed */
-    /* z-index remains 1050 but visibility/pointer-events make it inert */
+    right: -280px; /* Ensure it stays off screen */
+    transform: translateX(0px); /* Reset transform */
   }
 
+  .app-navbar .mobile-drawer.show {
+    right: 0;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(0px); /* Reset transform if it was dragged before */
+  }
+
+  /* When dragging, disable transitions for smooth user-controlled movement */
+  .app-navbar .mobile-drawer.dragging {
+      transition: none !important;
+  }
 
   .app-navbar .navbar-nav {
     flex-direction: column;
@@ -212,7 +218,7 @@ section {
     line-height: 1;
     opacity: 0.7;
     transition: opacity 0.2s ease-in-out, color 0.2s ease-in-out;
-    z-index: 1060; /* Higher than drawer */
+    z-index: 1060;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -237,26 +243,7 @@ section {
     stroke: #007bff;
   }
 
-  /* Transparent Overlay for click-outside-close */
-  .offcanvas-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3); /* Subtle dimming effect */
-    z-index: 1040; /* BETWEEN main navbar (1030) and open drawer (1050) */
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0s linear 0.3s; /* Delay visibility when closing */
-  }
-
-  /* Show overlay when expanded */
-  .offcanvas-overlay.show-overlay {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 0.3s ease-in-out; /* Instant visibility when opening */
-  }
+  /* No offcanvas-overlay styles needed now */
 
   /* Body overflow management for drawer */
   body {
@@ -281,13 +268,11 @@ section {
     flex-direction: row !important;
     align-items: center !important;
     transition: none !important;
-    pointer-events: auto !important; /* Ensure interactions are re-enabled */
+    pointer-events: auto !important;
     visibility: visible !important;
+    transform: translateX(0px) !important; /* Ensure no lingering transform */
   }
   .app-navbar .mobile-drawer .drawer-close-btn {
-    display: none !important;
-  }
-  .offcanvas-overlay {
     display: none !important;
   }
 }
