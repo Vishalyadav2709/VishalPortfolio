@@ -1,24 +1,19 @@
 /* src/App.css */
 #root {
-  /* max-width: 1280px; */
   margin: 0 auto;
-  /* padding: 2rem; */
   text-align: center;
 }
-/* Remove custom background for the Home component, now using bg-white from Bootstrap */
 .home-background {
-  background: none; /* Override previous background */
-  background-color: white; /* Ensure white background */
-  color: #343a40; /* Darker text for white background */
+  background: none;
+  background-color: white;
+  color: #343a40;
 }
 
-/* General padding for all sections except Home */
 section {
   padding-top: 5rem;
   padding-bottom: 5rem;
 }
 
-/* Ensure project card images have consistent height */
 .card-img-top {
   height: 200px;
   object-fit: cover;
@@ -27,7 +22,7 @@ section {
 /* --- Timeline Styling for Experience Section --- */
 .timeline-line {
   width: 2px;
-  background-color: #007bff; /* Bootstrap primary color */
+  background-color: #007bff;
   height: 100%;
   position: absolute;
   left: 50%;
@@ -45,7 +40,6 @@ section {
   z-index: 1;
 }
 
-/* Adjust timeline dot positioning within the flex row */
 #experience .row > .col-md-2 {
     position: relative;
     padding: 0;
@@ -62,7 +56,6 @@ section {
     height: 0;
 }
 
-/* Responsive adjustments for the timeline */
 @media (max-width: 767.98px) {
   #experience .row.flex-row,
   #experience .row.flex-row-reverse {
@@ -99,17 +92,133 @@ section {
   }
 }
 
-/* Custom styles for Contact social icons (optional) */
 .social-icon {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #343a40; /* Default color for a professional look on white background */
+  color: #343a40;
   transition: color 0.3s ease;
 }
 
 .social-icon:hover {
-  color: #007bff; /* Primary color on hover */
+  color: #007bff;
   text-decoration: none;
+}
+
+/* --- Navbar Specific Styling --- */
+.app-navbar {
+  background-color: white !important;
+  border-bottom: 1px solid #e0e0e0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.app-navbar .navbar-brand,
+.app-navbar .nav-link {
+  color: #343a40 !important;
+  font-weight: 500;
+  transition: color 0.3s ease-in-out;
+}
+
+.app-navbar .nav-link:hover {
+  color: #007bff !important;
+}
+
+.app-navbar .navbar-toggler {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.app-navbar .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%280, 0, 0, 0.5%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+.navbar-brand-logo {
+  display: flex;
+  align-items: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+}
+
+.logo-text {
+  color: black;
+  font-family: 'Arial', sans-serif;
+}
+
+
+/* --- Mobile Drawer Styling --- */
+@media (max-width: 991.98px) {
+  .app-navbar .mobile-drawer { /* Use the new class here */
+    position: fixed;
+    top: 0;
+    right: -280px;
+    width: 280px;
+    max-width: 80vw;
+    height: 100vh;
+    background-color: white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    transition: right 0.3s ease-in-out, z-index 0s linear 0.3s;
+    padding-top: 1rem; /* Adjust padding to make space for the close button at the very top */
+    z-index: -1;
+    overflow-y: auto;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .app-navbar .mobile-drawer.show {
+    right: 0;
+    z-index: 1040; /* Bring to front when open (higher than fixed navbar's 1030) */
+    transition: right 0.3s ease-in-out;
+  }
+
+  .app-navbar .navbar-nav {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 2rem; /* Give some space below the close button */
+  }
+
+  .app-navbar .navbar-nav .nav-link {
+    padding: 0.75rem 1.5rem;
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .app-navbar .navbar-nav .nav-link:last-child {
+    border-bottom: none;
+  }
+
+  /* Style for the Close button */
+  .drawer-close-btn {
+    position: absolute;
+    top: 15px; /* Adjust as needed */
+    right: 15px; /* Adjust as needed */
+    background: transparent;
+    border: none;
+    font-size: 1.8rem; /* Make the 'X' large enough */
+    color: #343a40; /* Dark color */
+    cursor: pointer;
+    padding: 0; /* Remove default button padding */
+    line-height: 1; /* Ensure 'X' is centered */
+    opacity: 0.7;
+    transition: opacity 0.2s ease-in-out;
+    z-index: 1070; /* Ensure it's always on top within the drawer */
+  }
+
+  .drawer-close-btn:hover {
+    opacity: 1;
+    color: #007bff; /* Highlight on hover */
+  }
+
+  /* Body overflow management for drawer */
+  body {
+    -webkit-overflow-scrolling: touch; /* smoother scrolling on iOS */
+  }
+  body.offcanvas-open {
+    overflow: hidden;
+  }
 }
