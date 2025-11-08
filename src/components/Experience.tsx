@@ -70,9 +70,13 @@ export default function Experience() {
                           {exp.company}
                         </p>
                       </div>
+                       <span  style={{width:"35%"}} >
                       <Badge variant="secondary" data-testid={`badge-type-${index}`}>
+                       
                         {exp.type}
+                       
                       </Badge>
+                       </span>
                     </div>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -82,7 +86,7 @@ export default function Experience() {
                       <span>{exp.location}</span>
                     </div>
 
-                    <ul className="space-y-3 mt-6">
+                    {/* <ul className="space-y-3 mt-6">
                       {exp.achievements.map((achievement, achIndex) => (
                         <li
                           key={achIndex}
@@ -93,7 +97,7 @@ export default function Experience() {
                           <span className="flex-1">{achievement}</span>
                         </li>
                       ))}
-                    </ul>
+                    </ul> */}
                   </div>
                 </Card>
               </div>

@@ -39,14 +39,14 @@ export default function Header() {
       }`}
       data-testid="header-main"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-4 bg-white">
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('#hero')}
             className="text-xl font-bold tracking-tight hover-elevate px-3 py-2 rounded-md transition-all"
             data-testid="button-logo"
           >
-            Vishal<span className="text-primary">.</span>
+            VY<span className="text-primary"></span>
           </button>
 
           <nav className="hidden md:flex items-center gap-1" data-testid="nav-desktop">

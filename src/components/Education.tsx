@@ -81,7 +81,7 @@ export default function Education() {
                     </div>
                   </div>
 
-                  <div className="pt-4">
+                  {/* <div className="pt-4">
                     <p className="text-sm text-muted-foreground mb-2">Key Coursework</p>
                     <div className="flex flex-wrap gap-2">
                       {edu.coursework.map((course, courseIndex) => (
@@ -95,11 +95,11 @@ export default function Education() {
                         </span>
                       ))}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="flex md:flex-col md:items-end md:justify-start items-start justify-start md:text-right">
-                  <div className="inline-flex flex-col items-end">
+                  <div className="inline-flex flex-col ">
                     <p className="text-sm text-muted-foreground mb-2">{edu.gradeLabel}</p>
                     <div className="flex items-baseline gap-1">
                       <p className="text-5xl font-bold" data-testid={`text-grade-${index}`}>

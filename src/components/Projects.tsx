@@ -87,15 +87,15 @@ export default function Projects() {
                       {project.description}
                     </p>
                   </div>
-                  
+{/*                   
                   <div className="flex-shrink-0">
                     <div className="w-16 h-16 rounded-xl bg-primary/10 flex items-center justify-center">
                       <Code2 className="w-8 h-8 text-primary" />
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
-                <div className="border-l-2 border-primary/20 pl-6 space-y-2">
+                {/* <div className="border-l-2 border-primary/20 pl-6 space-y-2">
                   {project.highlights.map((highlight, hIndex) => (
                     <div
                       key={hIndex}
@@ -106,7 +106,7 @@ export default function Projects() {
                       <span className="flex-1">{highlight}</span>
                     </div>
                   ))}
-                </div>
+                </div> */}
 
                 <div className="flex flex-wrap gap-2 pt-2">
                   {project.technologies.map((tech, techIndex) => (
@@ -121,7 +121,7 @@ export default function Projects() {
                   ))}
                 </div>
 
-                {index === 0 && (
+                {/* {index === 0 && (
                   <div className="pt-2">
                     <Button
                       variant="outline"
@@ -133,7 +133,7 @@ export default function Projects() {
                       <ExternalLink size={16} />
                     </Button>
                   </div>
-                )}
+                )} */}
               </div>
             </Card>
           ))}

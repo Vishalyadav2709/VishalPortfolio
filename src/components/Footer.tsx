@@ -6,17 +6,17 @@ export default function Footer() {
   };
 
   return (
-    <footer className="border-t border-border py-16" data-testid="footer-main">
+    <footer className="border-t border-border py-8" data-testid="footer-main">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-lg font-semibold">Vishal Yadav</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Full-Stack Developer specializing in MERN stack, building scalable and efficient web applications.
             </p>
-          </div>
+          </div> */}
 
-          <div className="space-y-4">
+          {/* <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col gap-2">
               <button
@@ -44,7 +44,7 @@ export default function Footer() {
                 Contact
               </button>
             </nav>
-          </div>
+          </div> */}
 
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Connect</h3>
@@ -90,12 +90,12 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} Vishal Tahsildar Yadav. All rights reserved.
           </p>
-          <button
+          {/* <button
             onClick={scrollToTop}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             Back to top ↑
-          </button>
+          </button> */}
         </div>
       </div>
     </footer>

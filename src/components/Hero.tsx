@@ -30,8 +30,7 @@ export default function Hero() {
                 data-testid="text-hero-tagline"
               >
                 Building scalable applications with React.js, Node.js, and the MERN stack.
-                <br className="hidden sm:block" />
-                Currently at Xircls, Mumbai.
+              
               </p>
             </div>
 
