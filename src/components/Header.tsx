@@ -34,12 +34,12 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 bg-white left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled ? 'bg-background/80 backdrop-blur-lg border-b border-border' : 'bg-transparent'
       }`}
       data-testid="header-main"
     >
-      <div className="max-w-7xl mx-auto bg-white" style={{padding:"5px"}}>
+      <div className="max-w-7xl mx-auto " style={{padding:"5px"}}>
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('#hero')}
