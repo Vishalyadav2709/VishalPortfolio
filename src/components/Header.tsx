@@ -39,7 +39,7 @@ export default function Header() {
       }`}
       data-testid="header-main"
     >
-      <div className="max-w-7xl mx-auto px-6 py-4 bg-white">
+      <div className="max-w-7xl mx-auto bg-white" style={{padding:"5px"}}>
         <div className="flex items-center justify-between">
           <button
             onClick={() => scrollToSection('#hero')}

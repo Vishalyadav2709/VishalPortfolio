@@ -53,7 +53,7 @@ export default function Projects() {
           <p className="text-sm uppercase tracking-wider text-primary font-semibold mb-4">
             Portfolio
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-2xl md:text-xl font-bold tracking-tight">
             Featured Projects
           </h2>
         </div>

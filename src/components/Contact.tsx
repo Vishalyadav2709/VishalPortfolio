@@ -27,16 +27,28 @@ const socialLinks = [
   {
     icon: Github,
     label: 'GitHub',
-    href: 'https://github.com',
+    href: 'https://github.com/Vishalyadav2709',
   },
   {
     icon: Linkedin,
     label: 'LinkedIn',
-    href: 'https://linkedin.com',
+    href: 'https://www.linkedin.com/in/vishal-yadav-0a8365209/',
   },
 ];
 
 export default function Contact() {
+  // ✅ Vite-safe asset path for your PDF
+  const resumePath = `${import.meta.env.BASE_URL}assets/Vishal_Yadav_Resume.pdf`;
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resumePath;
+    link.setAttribute('download', 'Vishal_Yadav_Resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <section id="contact" className="py-24 md:py-32" data-testid="section-contact">
       <div className="max-w-5xl mx-auto px-6">
@@ -44,7 +56,7 @@ export default function Contact() {
           <p className="text-sm uppercase tracking-wider text-primary font-semibold mb-4">
             Get In Touch
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+          <h2 className="text-2xl md:text-xl font-bold tracking-tight mb-6">
             Let's Build Something Together
           </h2>
           <p className="text-lg text-foreground/70 max-w-2xl mx-auto">
@@ -52,6 +64,7 @@ export default function Contact() {
           </p>
         </div>
 
+        {/* Contact Info Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-12">
           {contactInfo.map((info, index) => (
             <Card
@@ -84,6 +97,7 @@ export default function Contact() {
           ))}
         </div>
 
+        {/* Social Links + Buttons */}
         <div className="flex flex-col items-center gap-6">
           <div className="flex gap-4">
             {socialLinks.map((social, index) => (
@@ -101,6 +115,7 @@ export default function Contact() {
             ))}
           </div>
 
+          {/* Email & Resume Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
             <a
               href="mailto:vishal.tyadav2709@gmail.com"
@@ -112,17 +127,18 @@ export default function Contact() {
                 Email Me
               </Button>
             </a>
-            <a
-              href="attached_assets/Vishal_Yadav_Resume_1762087354949.pdf"
-              download
-              className="w-full sm:w-auto"
+
+            {/* ✅ Fixed Resume Download Button */}
+            <Button
+              onClick={handleDownload}
+              size="lg"
+              variant="outline"
+              className="gap-2 w-full"
               data-testid="button-download-resume-footer"
             >
-              <Button size="lg" variant="outline" className="gap-2 w-full">
-                <Download size={20} />
-                Download Resume
-              </Button>
-            </a>
+              <Download size={20} />
+              Download Resume
+            </Button>
           </div>
         </div>
       </div>

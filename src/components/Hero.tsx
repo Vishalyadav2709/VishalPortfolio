@@ -34,14 +34,14 @@ export default function Hero() {
               </p>
 
               <p className="mx-auto max-w-2xl text-base text-foreground/70 sm:text-lg">
-                Building scalable applications with React.js, Node.js, and the MERN stack.
+               Developing innovative, full-stack digital solutions.
               </p>
             </div>
 
             {/* Contact & Social Links */}
             <div className="animate-fade-in-up animation-delay-300 flex flex-col items-center gap-8">
               {/* Contact Information */}
-              <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+              {/* <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
                 <a
                   href="mailto:vishal.tyadav2709@gmail.com"
                   className="group flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -67,18 +67,18 @@ export default function Hero() {
                   <MapPin size={16} className="transition-transform group-hover:scale-110" />
                   <span>Mumbai</span>
                 </div>
-              </div>
+              </div> */}
 
               {/* Action Buttons */}
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/Vishalyadav2709" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="default" className="gap-2">
                     <Github size={18} />
                     GitHub
                   </Button>
                 </a>
 
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.linkedin.com/in/vishal-yadav-0a8365209/" target="_blank" rel="noopener noreferrer">
                   <Button variant="outline" size="default" className="gap-2">
                     <Linkedin size={18} />
                     LinkedIn

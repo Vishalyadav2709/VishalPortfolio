@@ -13,7 +13,7 @@ const education = [
     coursework: ['React', 'Operating Systems', 'Data Structures', 'SQL', 'Computer Networks'],
   },
   {
-    degree: 'Honors Program',
+    degree: 'Honors',
     field: 'Data Science',
     institution: 'Atharva College of Engineering',
     period: 'June 2022 – May 2024',
@@ -51,7 +51,7 @@ export default function Education() {
           <p className="text-sm uppercase tracking-wider text-muted-foreground font-semibold mb-4">
             Academic Background
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+          <h2 className="text-2xl md:text-xl font-bold tracking-tight">
             Education
           </h2>
         </div>
@@ -66,7 +66,7 @@ export default function Education() {
               <div className="grid md:grid-cols-4 gap-8">
                 <div className="md:col-span-3 space-y-4">
                   <div>
-                    <h3 className="text-2xl font-bold mb-1" data-testid={`text-degree-${index}`}>
+                    <h3 className="text-xl font-bold mb-1" data-testid={`text-degree-${index}`}>
                       {edu.degree}
                     </h3>
                     <p className="text-lg text-foreground/80 mb-3">
@@ -102,10 +102,10 @@ export default function Education() {
                   <div className="inline-flex flex-col ">
                     <p className="text-sm text-muted-foreground mb-2">{edu.gradeLabel}</p>
                     <div className="flex items-baseline gap-1">
-                      <p className="text-5xl font-bold" data-testid={`text-grade-${index}`}>
+                      <p className="text-2xl font-bold" data-testid={`text-grade-${index}`}>
                         {edu.grade}
                       </p>
-                      <p className="text-2xl text-muted-foreground">/{edu.gradeMax}</p>
+                      <p className="text-xl text-muted-foreground">/{edu.gradeMax}</p>
                     </div>
                   </div>
                 </div>
