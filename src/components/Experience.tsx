@@ -84,7 +84,7 @@ export default function Experience() {
                        
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs text-muted-foreground" style={{fontSize:"11px"}}>
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground" style={{fontSize:"10px"}}>
                       <Briefcase size={16} />
                       <span>{exp.period}</span>
                       <span>•</span>
