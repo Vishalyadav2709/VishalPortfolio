@@ -20,53 +20,8 @@ export default function Footer() {
   return (
     <footer className="border-t border-border py-8" data-testid="footer-main">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* Connect Section */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Connect</h3>
-
-            <div className="flex gap-3">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover-elevate transition-all"
-                data-testid="link-footer-github"
-              >
-                <Github size={18} />
-              </a>
-
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover-elevate transition-all"
-                data-testid="link-footer-linkedin"
-              >
-                <Linkedin size={18} />
-              </a>
-
-              <a
-                href="mailto:vishal.tyadav2709@gmail.com"
-                className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover-elevate transition-all"
-                data-testid="link-footer-email"
-              >
-                <Mail size={18} />
-              </a>
-            </div>
-
-            {/* ✅ Fixed Resume Download Button */}
-            <button
-              onClick={handleDownload}
-              className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors"
-              data-testid="link-footer-resume"
-            >
-              Download Resume →
-            </button>
-          </div>
-        </div>
-
-        <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
+      
+        <div className=" flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-muted-foreground">
             © {new Date().getFullYear()} Yadav Vishal. All rights reserved.
           </p>

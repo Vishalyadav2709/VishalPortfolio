@@ -5,10 +5,10 @@ import { ExternalLink, Calendar, Code2 } from 'lucide-react';
 
 const projects = [
   {
-    title: 'Shopify Theme App Extension + Merchant Dashboard',
+    title: 'Shopify Extension + Merchant Dashboard',
     period: 'Live & In Progress',
     status: 'Active',
-    description: 'A dual-platform solution featuring a customer-facing Theme App Extension for personalized Shopify accounts and a merchant-facing React.js dashboard for UI customization and settings control.',
+    description: 'A dual-platform solution featuring a customer-facing Theme App Extension for personalized Shopify accounts and a merchant-facing React.js dashboard.',
     highlights: [
       'Developed reusable React components and integrated Shopify Liquid for seamless storefront compatibility',
       'Synchronized dashboard and storefront data using REST APIs and metafields',
@@ -80,10 +80,10 @@ export default function Projects() {
                         {project.status}
                       </Badge>
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-bold mb-3" data-testid={`text-project-title-${index}`}>
+                    <h3 className="text-xl md:text-lg font-bold mb-3" data-testid={`text-project-title-${index}`}>
                       {project.title}
                     </h3>
-                    <p className="text-foreground/80 leading-relaxed">
+                    <p className=" leading-relaxed text-xs">
                       {project.description}
                     </p>
                   </div>

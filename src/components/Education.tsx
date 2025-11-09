@@ -28,7 +28,7 @@ const education = [
     ],
   },
   {
-    degree: 'Higher Secondary Certificate',
+    degree: 'HSC',
     field: 'Computer Science',
     institution: 'Thakur College Of Science and Commerce',
     period: 'March 2020',
@@ -66,10 +66,10 @@ export default function Education() {
               <div className="grid md:grid-cols-4 gap-8">
                 <div className="md:col-span-3 space-y-4">
                   <div>
-                    <h3 className="text-xl font-bold mb-1" data-testid={`text-degree-${index}`}>
+                    <h3 className="text-lg font-bold mb-1" data-testid={`text-degree-${index}`}>
                       {edu.degree}
                     </h3>
-                    <p className="text-lg text-foreground/80 mb-3">
+                    <p className="text-md text-foreground/80 mb-3">
                       {edu.field}
                     </p>
                     <p className="text-foreground/70 mb-2" data-testid={`text-institution-${index}`}>

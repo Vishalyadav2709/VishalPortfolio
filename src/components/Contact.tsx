@@ -50,7 +50,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-24 md:py-32" data-testid="section-contact">
+    <section id="contact" className="py-16 md:py-32" data-testid="section-contact">
       <div className="max-w-5xl mx-auto px-6">
         <div className="text-center mb-16">
           <p className="text-sm uppercase tracking-wider text-primary font-semibold mb-4">

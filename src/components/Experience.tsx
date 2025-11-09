@@ -5,7 +5,7 @@ import { Briefcase } from 'lucide-react';
 const experiences = [
   {
     role: 'Frontend Developer',
-    company: 'Altis Advance Tech Private Limited (Xircls)',
+    company: 'Altis Advance Tech Private Limited',
     location: 'Mumbai',
     period: 'June 2024 – Present',
     type: 'Full-time',
@@ -19,7 +19,7 @@ const experiences = [
   },
   {
     role: 'Frontend Intern',
-    company: 'Altis Advance Tech Private Limited (Xircls)',
+    company: 'Altis Advance Tech Private Limited',
     location: 'Mumbai',
     period: 'April 2024 – June 2024',
     type: 'Internship',

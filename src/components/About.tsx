@@ -15,7 +15,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 md:py-28 bg-muted/30"
+      className="py-16 md:py-28 bg-muted/30"
       data-testid="section-about"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -34,8 +34,8 @@ export default function About() {
           
           {/* Left Column: Introduction Text with Dropdown */}
           <div className="lg:col-span-3 space-y-4 text-lg text-foreground/80">
-            <p className="text-left" data-testid="text-about-intro">
-              I'm a passionate MERN stack developer based in Mumbai, currently crafting user-centric front-end solutions at <span className="font-semibold text-foreground">Altis Advance Tech (Xircls)</span>. I combine academic excellence with hands-on experience to build efficient and scalable web applications.
+            <p className="text-center" data-testid="text-about-intro">
+              I'm a passionate MERN stack developer based in Mumbai, currently crafting user-centric front-end solutions at <span className="font-semibold text-foreground">Altis Advance Tech PVT LTD</span>. I combine academic excellence with hands-on experience to build efficient and scalable web applications.
             </p>
             
             <Accordion type="single" collapsible className="w-full">
@@ -47,11 +47,11 @@ export default function About() {
                   3. The component will automatically add its own rotating chevron icon.
                   4. Style the trigger directly with `className` to get the desired appearance.
                 */}
-                <AccordionTrigger className="text-lg text-primary hover:no-underline justify-start p-0 font-medium">
+                <AccordionTrigger className="text-lg text-primary hover:no-underline justify-center p-0 font-medium">
                   Read More
                 </AccordionTrigger>
 
-                <AccordionContent className="pt-4 text-left">
+                <AccordionContent className="pt-4 text-center">
                   <div className="space-y-6">
                     <p>
                       Graduating with a <span className="font-semibold text-foreground">9.72 CGPA</span> in Information Technology from Atharva College of Engineering, I excel in creating responsive interfaces with React.js and robust back-ends with Node.js and Express.
