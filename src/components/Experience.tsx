@@ -63,20 +63,25 @@ export default function Experience() {
                   <div className="space-y-4">
                     <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div>
+                        <div style={{display:"flex", justifyContent:"space-between"}}>
                         <h3 className="text-2xl font-bold" data-testid={`text-role-${index}`}>
                           {exp.role}
                         </h3>
+                        
+                      </div>
                         <p className="text-lg text-foreground/80 mt-1" data-testid={`text-company-${index}`}>
                           {exp.company}
                         </p>
                       </div>
+                     
                        <span  style={{width:"35%"}} >
-                      <Badge variant="secondary" data-testid={`badge-type-${index}`}>
+                         <Badge variant="secondary" data-testid={`badge-type-${index}`}>
                        
                         {exp.type}
                        
                       </Badge>
-                       </span>
+                      </span>
+                       
                     </div>
 
                     <div className="flex items-center gap-2 text-sm text-muted-foreground">

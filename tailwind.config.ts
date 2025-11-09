@@ -83,7 +83,7 @@ export default {
         },
       },
       fontFamily: {
-        caveat: ['Caveat', 'cursive'],
+       mono: ['"JetBrains Mono"', 'monospace'],
 
       },
       keyframes: {

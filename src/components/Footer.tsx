@@ -5,49 +5,26 @@ export default function Footer() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // ✅ Vite-safe public asset path
+  const resumePath = `${import.meta.env.BASE_URL}assets/Vishal_Yadav_Resume.pdf`;
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = resumePath;
+    link.setAttribute('download', 'Vishal_Yadav_Resume.pdf');
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <footer className="border-t border-border py-8" data-testid="footer-main">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-3 gap-12 mb-12">
-          {/* <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Vishal Yadav</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              Full-Stack Developer specializing in MERN stack, building scalable and efficient web applications.
-            </p>
-          </div> */}
-
-          {/* <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
-            <nav className="flex flex-col gap-2">
-              <button
-                onClick={() => document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
-              >
-                About
-              </button>
-              <button
-                onClick={() => document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
-              >
-                Projects
-              </button>
-              <button
-                onClick={() => document.querySelector('#experience')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors text-left"
-              >
-                Contact
-              </button>
-            </nav>
-          </div> */}
-
+          {/* Connect Section */}
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Connect</h3>
+
             <div className="flex gap-3">
               <a
                 href="https://github.com"
@@ -58,6 +35,7 @@ export default function Footer() {
               >
                 <Github size={18} />
               </a>
+
               <a
                 href="https://linkedin.com"
                 target="_blank"
@@ -67,6 +45,7 @@ export default function Footer() {
               >
                 <Linkedin size={18} />
               </a>
+
               <a
                 href="mailto:vishal.tyadav2709@gmail.com"
                 className="w-10 h-10 rounded-lg border border-border flex items-center justify-center hover-elevate transition-all"
@@ -75,21 +54,24 @@ export default function Footer() {
                 <Mail size={18} />
               </a>
             </div>
-            <a
-              href="attached_assets/Vishal_Yadav_Resume_1762087354949.pdf"
-              download
+
+            {/* ✅ Fixed Resume Download Button */}
+            <button
+              onClick={handleDownload}
               className="inline-block text-sm text-muted-foreground hover:text-foreground transition-colors"
               data-testid="link-footer-resume"
             >
               Download Resume →
-            </a>
+            </button>
           </div>
         </div>
 
         <div className="pt-8 border-t border-border flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Vishal Tahsildar Yadav. All rights reserved.
+            © {new Date().getFullYear()} Yadav Vishal. All rights reserved.
           </p>
+
+          {/* Optional Scroll to Top */}
           {/* <button
             onClick={scrollToTop}
             className="text-sm text-muted-foreground hover:text-foreground transition-colors"
