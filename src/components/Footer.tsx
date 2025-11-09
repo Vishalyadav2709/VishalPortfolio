@@ -23,7 +23,7 @@ export default function Footer() {
       
         <div className=" flex flex-col sm:flex-row items-center justify-center gap-4">
           <p className="text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Yadav Vishal. All rights reserved.
+           © {new Date().getFullYear()} Yadav Vishal. All rights reserved.
           </p>
 
           {/* Optional Scroll to Top */}
